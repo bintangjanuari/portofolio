@@ -1,0 +1,156 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  transition: all $transition-smooth;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+
+  &.scrolled {
+    @include glassmorphism;
+    border-bottom-color: var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: $font-size-title;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: $radius-sm;
+  }
+}
+
+.logoBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: $radius-md;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: $font-size-body;
+  box-shadow: 0 2px 8px var(--color-accent-glow);
+}
+
+.brandName {
+  font-weight: 700;
+}
+
+.accentDot {
+  color: var(--color-accent);
+}
+
+.desktopNav {
+  display: none;
+
+  @media (min-width: $bp-tablet) {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+}
+
+.navLink {
+  font-size: $font-size-body-sm;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: color $transition-fast;
+  position: relative;
+  padding: $space-1 0;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  &.active {
+    color: var(--color-text-primary);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-accent);
+      border-radius: $radius-full;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.cvButtonDesktop {
+  display: none;
+
+  @media (min-width: $bp-tablet) {
+    display: block;
+  }
+}
+
+.mobileToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-md;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  transition: all $transition-base;
+
+  @media (min-width: $bp-tablet) {
+    display: none;
+  }
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}

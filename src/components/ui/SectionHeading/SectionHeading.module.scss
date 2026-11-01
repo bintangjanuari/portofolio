@@ -1,0 +1,51 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.header {
+  margin-bottom: $spacing-8;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+
+  @include respond-to("sm") {
+    margin-bottom: $spacing-12;
+  }
+}
+
+.center {
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left {
+  text-align: left;
+  max-width: 680px;
+}
+
+.badgeWrapper {
+  margin-bottom: $space-3;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.title {
+  font-size: clamp(1.45rem, 5.5vw, $font-size-headline);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+  margin-bottom: $space-3;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.description {
+  font-size: clamp(0.9rem, 3.2vw, $font-size-body);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}

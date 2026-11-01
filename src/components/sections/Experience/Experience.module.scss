@@ -1,0 +1,355 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.experienceSection {
+  padding-top: $spacing-16;
+  padding-bottom: $spacing-16;
+  position: relative;
+
+  @include respond-to("sm") {
+    padding-top: $spacing-20;
+    padding-bottom: $spacing-20;
+  }
+}
+
+.timelineContainer {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: $spacing-4;
+
+  @include respond-to("sm") {
+    padding-left: $spacing-6;
+  }
+
+  @include respond-to("md") {
+    padding-left: $spacing-10;
+  }
+}
+
+.timelineTrack {
+  position: absolute;
+  top: 12px;
+  bottom: 24px;
+  left: 6px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent) 0%,
+    var(--color-border) 40%,
+    var(--color-border-subtle) 100%
+  );
+
+  @include respond-to("sm") {
+    left: 9px;
+  }
+
+  @include respond-to("md") {
+    left: 17px;
+  }
+}
+
+.timelineList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-8;
+
+  @include respond-to("sm") {
+    gap: $spacing-10;
+  }
+}
+
+.timelineItem {
+  position: relative;
+}
+
+.timelineMarker {
+  position: absolute;
+  top: 24px;
+  left: -15px;
+  width: 14px;
+  height: 14px;
+  border-radius: $radius-full;
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: all $transition-fast;
+
+  @include respond-to("sm") {
+    left: -20px;
+  }
+
+  @include respond-to("md") {
+    left: -28px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.markerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-full;
+  background-color: var(--color-text-muted);
+  transition: all $transition-fast;
+
+  @include respond-to("md") {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.timelineItemCurrent {
+  .timelineMarker {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px var(--color-accent-subtle);
+  }
+
+  .markerDot {
+    background-color: var(--color-accent);
+  }
+}
+
+.experienceCard {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $spacing-4;
+  transition: all $transition-normal;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  box-sizing: border-box;
+
+  @include respond-to("sm") {
+    border-radius: $radius-xl;
+    padding: $spacing-6;
+    gap: $spacing-5;
+  }
+
+  @include respond-to("md") {
+    padding: $spacing-8;
+  }
+
+  &:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: $spacing-4;
+
+  @include respond-to("sm") {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: $spacing-5;
+  }
+}
+
+.roleInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-1;
+}
+
+.companyRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  flex-wrap: wrap;
+}
+
+.companyIcon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.companyName {
+  font-size: $font-size-body-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-accent);
+  word-break: break-word;
+}
+
+.roleTitle {
+  font-size: clamp(1.15rem, 4.5vw, $font-size-title-lg);
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+  align-items: center;
+}
+
+.metaBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface-hover);
+  border: 1px solid var(--color-border-subtle);
+  padding: 3px $spacing-2;
+  border-radius: $radius-md;
+  font-family: $font-family-mono;
+  word-break: break-word;
+}
+
+.responsibilitiesSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.subSectionTitle {
+  font-size: $font-size-label;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.bulletList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.bulletItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-2;
+  font-size: $font-size-body-sm;
+  color: var(--color-text-secondary);
+  line-height: $line-height-relaxed;
+}
+
+.bulletIcon {
+  color: var(--color-accent);
+  font-size: 1.2em;
+  line-height: 1;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.achievementsBox {
+  background-color: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: $radius-md;
+  padding: $spacing-3;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+
+  @include respond-to("sm") {
+    padding: $spacing-4;
+  }
+}
+
+.achievementsHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}
+
+.awardIcon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.achievementsTitle {
+  font-size: $font-size-label;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.achievementsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-1;
+}
+
+.achievementItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-2;
+  font-size: 13px;
+  color: var(--color-text-primary);
+  font-weight: $font-weight-medium;
+  line-height: $line-height-relaxed;
+}
+
+.checkIcon {
+  color: var(--color-status-success);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.techStackFooter {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  padding-top: $spacing-3;
+  border-top: 1px solid var(--color-border-subtle);
+
+  @include respond-to("sm") {
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-3;
+    padding-top: $spacing-4;
+  }
+}
+
+.techLabel {
+  font-size: $font-size-caption;
+  font-family: $font-family-mono;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.techTag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-family: $font-family-mono;
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  padding: 2px 7px;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+}

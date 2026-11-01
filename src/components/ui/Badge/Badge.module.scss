@@ -1,0 +1,66 @@
+@use "@/styles/variables" as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-weight: 500;
+  border-radius: $radius-full;
+  line-height: 1.35;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid transparent;
+  font-family: $font-mono;
+  box-sizing: border-box;
+}
+
+.label {
+  display: inline;
+  word-break: break-word;
+}
+
+.sm {
+  padding: 0.25rem 0.55rem;
+  font-size: $font-size-caption;
+}
+
+.md {
+  padding: 0.35rem 0.75rem;
+  font-size: $font-size-label;
+}
+
+.default {
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  border-color: var(--badge-border);
+}
+
+.primary {
+  background-color: var(--color-surface-hover);
+  color: var(--color-accent);
+  border-color: var(--color-border);
+}
+
+.accent {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+
+.success {
+  background-color: var(--color-success-subtle);
+  color: var(--color-success);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9em;
+  flex-shrink: 0;
+}

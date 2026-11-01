@@ -1,0 +1,61 @@
+@use "@/styles/variables" as *;
+
+// Media query mixin
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "mobile-sm" or $breakpoint == "xs" {
+    @media (min-width: #{$bp-mobile-sm}) {
+      @content;
+    }
+  } @else if $breakpoint == "mobile" or $breakpoint == "sm" {
+    @media (min-width: 640px) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet" or $breakpoint == "md" {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == "laptop" or $breakpoint == "lg" {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop" or $breakpoint == "xl" {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+}
+
+// Glassmorphism effect
+@mixin glassmorphism {
+  background: var(--navbar-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+// Card base style
+@mixin card-base {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  transition: all $transition-smooth;
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+  }
+}
+
+// Flex center helper
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Truncate text
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
