@@ -30,7 +30,7 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
+          setIsScrolled(window.scrollY > 10);
           ticking = false;
         });
         ticking = true;
@@ -130,6 +130,7 @@ export const Navbar: React.FC = () => {
           </div>
         </Container>
       </header>
+      <div className={styles.navSpacer} aria-hidden="true" />
 
       {/* Mobile Drawer Menu */}
       <MobileMenu

@@ -3,11 +3,12 @@ export interface SocialLinks {
   linkedin: string;
   email: string;
   phone?: string;
+  whatsapp?: string;
   website?: string;
 }
 
 export interface SocialPlatformLink {
-  platform: "github" | "linkedin" | "email" | "phone" | "website";
+  platform: "github" | "linkedin" | "email" | "phone" | "website" | "whatsapp";
   url: string;
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Phone, MapPin, Clock, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, MessageCircle, Github, Linkedin } from "lucide-react";
 import { Container } from "@/components/ui/Container/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading/SectionHeading";
 import { SocialLink } from "@/components/ui/SocialLink/SocialLink";
@@ -36,15 +36,37 @@ export const Contact: React.FC = () => {
                   </div>
                 </a>
 
-                <a href={`tel:${profileData.phone.replace(/[\s-]/g, "")}`} className={styles.channelItem}>
-                  <div className={styles.channelIcon}>
-                    <Phone size={20} aria-hidden="true" />
+                <div className={styles.channelCard}>
+                  <div className={styles.channelHeaderRow}>
+                    <div className={styles.channelIcon}>
+                      <Phone size={20} aria-hidden="true" />
+                    </div>
+                    <div className={styles.channelContent}>
+                      <span className={styles.channelLabel}>Phone &amp; WhatsApp</span>
+                      <span className={styles.channelValue}>{profileData.phone}</span>
+                    </div>
                   </div>
-                  <div className={styles.channelContent}>
-                    <span className={styles.channelLabel}>Phone / WhatsApp</span>
-                    <span className={styles.channelValue}>{profileData.phone}</span>
+                  <div className={styles.channelButtonRow}>
+                    <a
+                      href={`https://wa.me/${profileData.phone.replace(/[^0-9]/g, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.channelButtonWa}
+                      aria-label="Open WhatsApp chat with Bintang"
+                    >
+                      <MessageCircle size={15} aria-hidden="true" />
+                      <span>Chat on WhatsApp</span>
+                    </a>
+                    <a
+                      href={`tel:${profileData.phone.replace(/[\s-]/g, "")}`}
+                      className={styles.channelButtonCall}
+                      aria-label="Direct telephone call to Bintang"
+                    >
+                      <Phone size={14} aria-hidden="true" />
+                      <span>Direct Call</span>
+                    </a>
                   </div>
-                </a>
+                </div>
 
                 <div className={styles.channelItem}>
                   <div className={styles.channelIcon}>

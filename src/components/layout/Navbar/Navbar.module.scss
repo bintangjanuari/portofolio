@@ -2,12 +2,13 @@
 @use "@/styles/mixins" as *;
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   z-index: 100;
-  transition: all $transition-smooth;
+  transition: background-color $transition-smooth, border-color $transition-smooth, box-shadow $transition-smooth, backdrop-filter $transition-smooth;
   background-color: transparent;
   border-bottom: 1px solid transparent;
 
@@ -18,11 +19,23 @@
   }
 }
 
+.navSpacer {
+  height: 64px;
+
+  @media (min-width: $bp-tablet) {
+    height: 72px;
+  }
+}
+
 .navContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 64px;
+
+  @media (min-width: $bp-tablet) {
+    height: 72px;
+  }
 }
 
 .brand {

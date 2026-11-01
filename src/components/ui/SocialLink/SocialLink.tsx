@@ -1,8 +1,8 @@
 import React from "react";
-import { Github, Linkedin, Mail, Phone, Globe } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, Globe, MessageCircle } from "lucide-react";
 import styles from "./SocialLink.module.scss";
 
-export type SocialType = "github" | "linkedin" | "email" | "phone" | "website";
+export type SocialType = "github" | "linkedin" | "email" | "phone" | "website" | "whatsapp";
 
 export interface SocialLinkProps {
   type?: SocialType;
@@ -20,6 +20,7 @@ const icons: Record<SocialType, React.ReactNode> = {
   email: <Mail size={18} aria-hidden="true" />,
   phone: <Phone size={18} aria-hidden="true" />,
   website: <Globe size={18} aria-hidden="true" />,
+  whatsapp: <MessageCircle size={18} aria-hidden="true" />,
 };
 
 const defaultLabels: Record<SocialType, string> = {
@@ -28,6 +29,7 @@ const defaultLabels: Record<SocialType, string> = {
   email: "Email",
   phone: "Phone",
   website: "Portfolio",
+  whatsapp: "WhatsApp",
 };
 
 export const SocialLink: React.FC<SocialLinkProps> = ({

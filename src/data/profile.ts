@@ -19,11 +19,13 @@ export const profileData: Profile = {
     linkedin: "https://linkedin.com/in/bintang-al-akbar-januari",
     email: "mailto:akbarbintang9991@gmail.com",
     phone: "tel:+6281717425199",
+    whatsapp: "https://wa.me/6281717425199",
     website: "https://itsavirus.com",
   },
   socialLinks: [
     { platform: "github", url: "https://github.com/bintangjanuari" },
     { platform: "linkedin", url: "https://linkedin.com/in/bintang-al-akbar-januari" },
+    { platform: "whatsapp", url: "https://wa.me/6281717425199" },
     { platform: "email", url: "mailto:akbarbintang9991@gmail.com" },
   ],
   stats: [
