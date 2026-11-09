@@ -4,7 +4,7 @@ export const experienceData: WorkExperience[] = [
   {
     id: "amg",
     company: "Alternative Media Group (AMG)",
-    role: "Fullstack Developer (CMS & Media Operations)",
+    role: "Fullstack Developer (CMS & Fleet Operations)",
     location: "Jakarta, Indonesia",
     period: "June 2026 – Present",
     startDate: "2026-06",
@@ -36,7 +36,7 @@ export const experienceData: WorkExperience[] = [
     id: "frameio",
     company: "Frame.io",
     role: "Fullstack Developer (Node.js & Frontend)",
-    location: "Remote",
+    location: "Remote • Video Cloud",
     period: "September 2025 – April 2026",
     startDate: "2025-09",
     endDate: "2026-04",
@@ -94,7 +94,7 @@ export const experienceData: WorkExperience[] = [
   {
     id: "jagad",
     company: "PT Jagad Aman Prima",
-    role: "Fullstack / Web Developer",
+    role: "Fullstack / Web Developer (Pertamina & DSN)",
     location: "Jakarta, Indonesia",
     period: "August 2023 – June 2024",
     startDate: "2023-08",
@@ -124,7 +124,7 @@ export const experienceData: WorkExperience[] = [
     id: "itsavirus",
     company: "Itsavirus",
     role: "Software Engineer / Frontend Developer",
-    location: "Bali, Indonesia",
+    location: "Amsterdam / Bali • Digital Studio",
     period: "August 2021 – August 2023",
     startDate: "2021-08",
     endDate: "2023-08",
@@ -148,4 +148,3 @@ export const experienceData: WorkExperience[] = [
     ],
   },
 ];
-

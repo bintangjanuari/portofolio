@@ -2,28 +2,29 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, FileDown } from "lucide-react";
+import { ArrowUpRight, FileDown } from "lucide-react";
 import { Container } from "@/components/ui/Container/Container";
 import { ThemeToggle } from "@/components/ui/ThemeToggle/ThemeToggle";
-import { Button } from "@/components/ui/Button/Button";
 import { profileData } from "@/data/profile";
-import { NavItem } from "@/types";
-import { MobileMenu } from "../MobileMenu/MobileMenu";
 import styles from "./Navbar.module.scss";
 
-const navItems: NavItem[] = [
-  { label: "About", href: "#about" },
-  { label: "Tech Stack", href: "#tech-stack" },
+interface NavLinkItem {
+  label: string;
+  href: string;
+}
+
+const navLinks: NavLinkItem[] = [
+  { label: "Home", href: "#hero" },
+  { label: "Work", href: "#work" },
   { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
+  { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     let ticking = false;
@@ -57,8 +58,8 @@ export const Navbar: React.FC = () => {
       }
     );
 
-    const sections = navItems.map((item) => item.href.substring(1));
-    sections.forEach((id) => {
+    const sectionIds = ["hero", "work", "experience", "skills", "about", "contact"];
+    sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -72,18 +73,15 @@ export const Navbar: React.FC = () => {
         className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`.trim()}
       >
         <Container size="default" className={styles.navContainer}>
-          {/* Brand Logo */}
-          <Link href="#" className={styles.brand} aria-label="Bintang Al Akbar Januari - Home">
-            <span className={styles.logoBadge} aria-hidden="true">B</span>
-            <span className={styles.brandName}>
-              Bintang<span className={styles.accentDot}>.</span>
-            </span>
+          {/* Monogram Brand Logo */}
+          <Link href="#hero" className={styles.brand} aria-label="Bintang Al Akbar Januari - Home">
+            <span className={styles.monogram}>BA</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Center Desktop Navigation Links */}
           <nav className={styles.desktopNav} aria-label="Main Navigation">
             <ul className={styles.navList}>
-              {navItems.map((item) => {
+              {navLinks.map((item) => {
                 const isActive = activeSection === item.href.substring(1);
                 return (
                   <li key={item.href}>
@@ -102,45 +100,39 @@ export const Navbar: React.FC = () => {
 
           {/* Right Header Actions */}
           <div className={styles.headerActions}>
-            <ThemeToggle />
-
-            <div className={styles.cvButtonDesktop}>
-              <Button
-                as="a"
-                href={profileData.resumeUrl}
-                download="CV_Bintang_Al_Akbar_Januari.pdf"
-                variant="primary"
-                size="sm"
-                icon={<FileDown size={16} />}
-              >
-                Resume
-              </Button>
+            {/* Availability Pill */}
+            <div className={styles.availabilityBadge} aria-label="Status: Available for work">
+              <span className={styles.pulseDot} />
+              <span className={styles.availabilityText}>AVAILABLE</span>
             </div>
 
-            {/* Mobile Hamburger Toggle */}
-            <button
-              type="button"
-              className={styles.mobileToggle}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
+            {/* Resume Download CTA */}
+            <a
+              href={profileData.resumeUrl}
+              download="CV_Bintang_Al_Akbar_Januari.pdf"
+              className={styles.resumeBtn}
+              aria-label="Download Official Resume CV"
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
+              <FileDown size={14} />
+              <span>Resume</span>
+            </a>
+
+            {/* Let's Talk CTA (Desktop) */}
+            <a
+              href="mailto:akbarbintang9991@gmail.com"
+              className={styles.talkBtn}
+              aria-label="Let's Talk via Email"
+            >
+              <span>Let&apos;s Talk</span>
+              <ArrowUpRight size={14} />
+            </a>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </div>
         </Container>
       </header>
       <div className={styles.navSpacer} aria-hidden="true" />
-
-      {/* Mobile Drawer Menu */}
-      <MobileMenu
-        isOpen={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-        navItems={navItems}
-        activeSection={activeSection}
-        resumeUrl={profileData.resumeUrl}
-      />
     </>
   );
 };
-

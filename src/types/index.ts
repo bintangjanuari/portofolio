@@ -66,6 +66,7 @@ export interface WorkExperience {
 export interface Project {
   id: string;
   title: string;
+  subtitle?: string;
   category: string;
   description: string;
   longDescription?: string;

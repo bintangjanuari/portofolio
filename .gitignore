@@ -33,7 +33,18 @@ yarn-error.log*
 next-env.d.ts
 
 # agents & ai
+.agent/
+.agent
 .agents/
 .agents
+.impeccable/
+.impeccable
+.stitch_assets/
+.stitch_assets
+
+# design & product specs
+DESIGN.md
+PRODUCT.md
+
 
 

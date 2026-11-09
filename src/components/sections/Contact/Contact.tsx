@@ -1,122 +1,188 @@
-import React from "react";
-import { Mail, Phone, MapPin, Clock, MessageCircle, Github, Linkedin } from "lucide-react";
+"use client";
+
+import React, { useState } from "react";
+import {
+  ArrowUpRight,
+  Mail,
+  Phone,
+  MapPin,
+  Globe,
+  Linkedin,
+  Github,
+  MessageCircle,
+  Sparkles,
+  Send,
+  CheckCircle2
+} from "lucide-react";
 import { Container } from "@/components/ui/Container/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading/SectionHeading";
-import { SocialLink } from "@/components/ui/SocialLink/SocialLink";
 import { profileData } from "@/data/profile";
 import { ContactForm } from "./ContactForm";
 import styles from "./Contact.module.scss";
 
 export const Contact: React.FC = () => {
+  const [showForm, setShowForm] = useState(false);
+
   return (
-    <section id="contact" className={styles.contactSection} aria-label="Contact Information">
-      <Container size="xl">
-        <SectionHeading
-          badge="Get in Touch"
-          title="Let's build something exceptional together"
-          subtitle="Whether you have an upcoming project, are looking for an experienced fullstack developer, or just want to discuss modern software architecture — I am always open to connecting."
-        />
+    <section id="contact" className={styles.contactSection} aria-label="Direct Contact">
+      <Container size="default">
+        {/* Main Stitch Glass Box Container */}
+        <div className={styles.ctaGlassCard}>
+          {/* Subtle Ambient Glow */}
+          <div className={styles.cardGlow} aria-hidden="true" />
 
-        <div className={styles.contactGrid}>
-          <div className={styles.infoColumn}>
-            <div className={styles.infoCard}>
-              <h3 className={styles.infoTitle}>Direct Contact Channels</h3>
-              <p className={styles.infoDescription}>
-                Feel free to email me directly or connect through LinkedIn. I respond promptly within 24 hours.
-              </p>
+          <div className={styles.cardGrid}>
+            {/* Left Column: Big Headline & Availability CTA */}
+            <div className={styles.leftCol}>
+              <div className={styles.eyebrowBadge}>
+                <Sparkles size={16} className={styles.sparkleIcon} />
+                <span>Ready for next engineering challenge</span>
+              </div>
 
+              <h2 className={styles.headline}>
+                LET&apos;S BUILD
+                <br />
+                SOMETHING
+                <br />
+                EXTRAORDINARY
+              </h2>
+
+              <div className={styles.ctaActionBlock}>
+                <p className={styles.availabilityNote}>
+                  Available for full-time roles, freelance projects, and engineering collaborations.
+                </p>
+
+                <div className={styles.actionBtnRow}>
+                  <a
+                    href="mailto:akbarbintang9991@gmail.com"
+                    className={styles.workTogetherBtn}
+                  >
+                    <span>Let&apos;s Work Together</span>
+                    <ArrowUpRight size={16} strokeWidth={2.5} />
+                  </a>
+
+                  <button
+                    type="button"
+                    className={styles.toggleFormBtn}
+                    onClick={() => setShowForm(!showForm)}
+                    aria-expanded={showForm}
+                    aria-controls="direct-message-form"
+                  >
+                    <Send size={15} />
+                    <span>{showForm ? "Hide Form" : "Send Quick Message"}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Direct Contact Info List */}
+            <div className={styles.rightCol}>
               <div className={styles.channelList}>
-                <a href={`mailto:${profileData.email}`} className={styles.channelItem}>
-                  <div className={styles.channelIcon}>
-                    <Mail size={20} aria-hidden="true" />
+                {/* Email */}
+                <a
+                  href={`mailto:${profileData.email}`}
+                  className={styles.channelRow}
+                  aria-label={`Send email to ${profileData.email}`}
+                >
+                  <div className={styles.channelCircle}>
+                    <Mail size={16} />
                   </div>
-                  <div className={styles.channelContent}>
-                    <span className={styles.channelLabel}>Email Address</span>
-                    <span className={styles.channelValue}>{profileData.email}</span>
-                  </div>
+                  <span className={styles.channelText}>{profileData.email}</span>
                 </a>
 
-                <div className={styles.channelCard}>
-                  <div className={styles.channelHeaderRow}>
-                    <div className={styles.channelIcon}>
-                      <Phone size={20} aria-hidden="true" />
+                {/* Phone & WhatsApp */}
+                <div className={styles.phoneChannelCard}>
+                  <div className={styles.channelRow}>
+                    <div className={styles.channelCircle}>
+                      <Phone size={16} />
                     </div>
-                    <div className={styles.channelContent}>
-                      <span className={styles.channelLabel}>Phone &amp; WhatsApp</span>
-                      <span className={styles.channelValue}>{profileData.phone}</span>
-                    </div>
+                    <span className={styles.channelText}>{profileData.phone}</span>
                   </div>
-                  <div className={styles.channelButtonRow}>
+                  <div className={styles.phoneSubActions}>
                     <a
-                      href={`https://wa.me/${profileData.phone.replace(/[^0-9]/g, "")}`}
+                      href="https://wa.me/6281717425199"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={styles.channelButtonWa}
-                      aria-label="Open WhatsApp chat with Bintang"
+                      className={styles.subActionWa}
+                      aria-label="Chat on WhatsApp"
                     >
-                      <MessageCircle size={15} aria-hidden="true" />
-                      <span>Chat on WhatsApp</span>
+                      <MessageCircle size={14} />
+                      <span>WhatsApp</span>
                     </a>
                     <a
                       href={`tel:${profileData.phone.replace(/[\s-]/g, "")}`}
-                      className={styles.channelButtonCall}
-                      aria-label="Direct telephone call to Bintang"
+                      className={styles.subActionCall}
+                      aria-label="Direct Phone Call"
                     >
-                      <Phone size={14} aria-hidden="true" />
-                      <span>Direct Call</span>
+                      <Phone size={13} />
+                      <span>Call</span>
                     </a>
                   </div>
                 </div>
 
-                <div className={styles.channelItem}>
-                  <div className={styles.channelIcon}>
-                    <MapPin size={20} aria-hidden="true" />
+                {/* Location */}
+                <div className={styles.channelRow}>
+                  <div className={styles.channelCircle}>
+                    <MapPin size={16} />
                   </div>
-                  <div className={styles.channelContent}>
-                    <span className={styles.channelLabel}>Location & Timezone</span>
-                    <span className={styles.channelValue}>{profileData.location} (UTC+7)</span>
-                  </div>
+                  <span className={styles.channelText}>Pandeglang Regency, Banten / Jakarta</span>
                 </div>
 
-                <div className={styles.channelItem}>
-                  <div className={styles.channelIcon}>
-                    <Clock size={20} aria-hidden="true" />
+                {/* Website */}
+                <a
+                  href="https://bintangdev.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.channelRow}
+                >
+                  <div className={styles.channelCircle}>
+                    <Globe size={16} />
                   </div>
-                  <div className={styles.channelContent}>
-                    <span className={styles.channelLabel}>Working Status</span>
-                    <span className={styles.channelValue}>{profileData.availability}</span>
-                  </div>
-                </div>
-              </div>
+                  <span className={styles.channelText}>bintangdev.vercel.app</span>
+                </a>
 
-              <div className={styles.socialGroup}>
-                <span className={styles.socialLabel}>Professional Networks:</span>
-                <div className={styles.socialButtons}>
-                  {profileData.socialLinks.map((link) => (
-                    <SocialLink
-                      key={link.platform}
-                      platform={link.platform}
-                      url={link.url}
-                      ariaLabel={`Visit ${link.platform} profile`}
-                    />
-                  ))}
-                </div>
+                {/* LinkedIn */}
+                <a
+                  href="https://linkedin.com/in/bintang-al-akbar-januari"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.channelRow}
+                >
+                  <div className={styles.channelCircle}>
+                    <Linkedin size={16} />
+                  </div>
+                  <span className={styles.channelText}>linkedin.com/in/bintang-al-akbar-januari</span>
+                </a>
+
+                {/* GitHub */}
+                <a
+                  href="https://github.com/bintangjanuari"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.channelRow}
+                >
+                  <div className={styles.channelCircle}>
+                    <Github size={16} />
+                  </div>
+                  <span className={styles.channelText}>github.com/bintangjanuari</span>
+                </a>
               </div>
             </div>
           </div>
 
-          <div className={styles.formColumn}>
-            <div className={styles.formWrapper}>
-              <h3 className={styles.formHeading}>Send a Message</h3>
-              <p className={styles.formSubheading}>
-                Fill out the form below and I will get back to you as soon as possible.
-              </p>
+          {/* Collapsible Direct Message Form */}
+          {showForm && (
+            <div id="direct-message-form" className={styles.formContainer}>
+              <div className={styles.formHeader}>
+                <h3 className={styles.formTitle}>Send a Direct Message</h3>
+                <p className={styles.formSubtitle}>
+                  Leave your details and message below. I will respond to your inquiry promptly.
+                </p>
+              </div>
               <ContactForm />
             </div>
-          </div>
+          )}
         </div>
       </Container>
     </section>
   );
 };
-
